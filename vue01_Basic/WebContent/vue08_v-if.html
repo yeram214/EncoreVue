@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> v-if | v-show </title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+	<!-- 조건부 렌더링. 
+		v-if   :: false일 경우 렌더링 조차 시도하지 않는다.. 
+				  -> 주석처리되어짐
+				  true가 된다면 다시 렌더링 시도
+				  토글 비용이 높다.
+				  아주 복잡하고 오랜 시간의 연산이 필요한 경우
+		v-show :: false일 경우 렌더링은 진행하되 css기법을 통해 
+				  display:none으로 처리.. -> 가린다
+				  true가 된다면 화면에 display되도록한다.
+				  토글 비용이 낮아 값의 변경 빈도가 높을 경우 사용.
+				  초기 렌더링 비용이 높다.
+				  값의 변경이 매우 잦은 경우
+	-->
+	<h1 v-if="show"> 나는 보입니다. 
+		<input type="text" name="text1">
+		<input type="text" name="text2">
+	</h1>
+	
+	<h1 v-show="show"> 나는 보입니다. 
+		<input type="text" name="text1">
+		<input type="text" name="text2">
+	</h1>
+</div>
+</body>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data:{
+			show: false
+		}
+	});
+</script>
+</html>

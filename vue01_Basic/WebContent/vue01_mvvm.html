@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<!-- Vue CDN --> 
+
+</head>
+<body>
+<!-- 1. 화면 구성 -->
+<div id="app">
+	<h2>{{message}}</h2>
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	/* 2. 데이타 :: Model */
+	var model = {message : "Vue.js START!!"}
+	
+	// 3. 뷰모델 :: VueModel(VM)- el(element), data
+	var app = new Vue({ //app라는 Vue 객체가 Vue Model이다.
+	
+		/*
+		vue 객체(app인스턴스)는 모델과 뷰를 지켜보면서 모델의 데이터 변화를 뷰에 반영하는 역할을 한다.
+		그런 의미에서 뷰 모델 app는 뷰와 모델을 연결하는 중개자 역할이다.
+		~.html파일이 로드된다는 것은 해당 파일의 내용(태그)들이 Dom구조로 메모리에 순서대로 올라가는 것을 뜻한다.
+		따라서 1,2,3번의 순서는 변경이 불가능하다.. 화면 구성 -> 데이터 -> 뷰 모델
+		
+		Vue 객체는 el, data 속성을 기본 속성으로 가지는데
+		el은 화면 중 어느 영역을 Vue객체가 관찰대상으로 삼을 것인지를 지정
+		data는 관찰 대상으로 삼고 있는 영역에 적용할 데이터를 지정해 보관하는 속성
+		*/
+		
+		
+		//화면 부분 중 어느 영역에 적용할전지를 지정한다
+		el : '#app',
+		
+		//el에 적용된 화면에서 출력할 데이터(정보)를 지정한다.
+		data : model
+	});
+//	Vue.config.devtools = true;
+</script>
+
+
+</html>

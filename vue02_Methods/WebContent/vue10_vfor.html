@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v-for와 함께 v-if이용하기</title>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<h2>v-for와 함께 v-if이용하기</h2>
+<div id="app">
+	<label>ENCORE 각 지역 별 개설 클래스 수</label>
+	<!-- <input v-model="num" type="number"> --><!-- v-model이 있어야 양방향으로 가능하다. -->
+	<input type="number" v-model.number="num"> <!-- input은 string으로 들어가지므로 number로 변환 필요 -->
+	<ul>
+	<!-- <li   v-for="(encore,index) in encores"  v-if = "(encore.count)==num">  -->	
+		 <li   v-for="(encore,index) in encores"  v-if = "(encore.count)===num">  <!-- 이녀석이 더 정교 -->
+		
+			{{index+1}}. {{encore.name}}, {{encore.count}}개 클래스
+		</li>
+	</ul>
+</div>
+<!-- java script는 
+	 0 == ' ' :: true
+	 0 == '0' :: true
+	 1 == true :: true
+	 로 취급된다. 
+	 따라서 "===" 연산자를 사용하여 값과 type 비교를 함께 진행해야 한다. -->
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			num:0,
+			
+			encores:[
+				{name: '영등포구', count:3},
+				{name: '남부지구', count:5},
+				{name: '서초지구', count:7}
+			]
+		}
+	});
+</script>
+
+</body>
+</html>
